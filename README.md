@@ -8,7 +8,7 @@ The goal is for employees to sign in to Windows with their company identity, whi
 
 The platform uses **Ruby on Rails**, and the Windows agent is also written in **Ruby**. The initial authentication design uses **Samba Active Directory** for native Windows domain sign-in.
 
-> **Project status:** planning stage. This repository currently contains documentation only. The architecture, interfaces, directory layout, and roadmap below describe the intended implementation; there is no runnable application or Windows agent yet.
+> **Project status:** initial scaffold. The repository includes a Rails application shell, a Ruby agent diagnostic CLI, local development infrastructure, and CI definitions. Identity provisioning, enrollment, access enforcement, and Windows service hosting are not implemented. Runtime validation is still required; see [development setup](docs/development.md).
 
 ## Contents
 
@@ -71,7 +71,7 @@ Building this platform does not automatically reproduce every Entra, Intune, or 
 | Optional web SSO | Keycloak federated with the directory | OIDC / SAML for connected web applications |
 | Deployment | Linux VMs; containers for suitable application services | Rails, database connectivity, workers, and supporting services |
 
-Ruby is the implementation language for both the application and the agent. A separate React application is not required for the initial dashboard. Exact runtime versions and dependencies will be pinned when implementation begins.
+Ruby is the implementation language for both the application and the agent. The scaffold targets Ruby 3.4 and Rails 8.1, with Hotwire for the dashboard. Dependencies are declared separately for each component; resolve and commit their lockfiles with Bundler before treating builds as reproducible.
 
 The Windows agent needs an early feasibility milestone: validate Ruby runtime packaging, Windows service lifecycle, privileged API access, and signed upgrades on a clean test VM before committing to a distribution approach.
 
@@ -275,7 +275,7 @@ Device private keys remain on the device. Avoid overloading a single role table 
 
 ## Proposed API
 
-These routes illustrate the planned contract. They are not implemented endpoints.
+These routes illustrate the planned contract. They are not implemented endpoints. The scaffold exposes only `/` (public project status) and `/up` (application liveness).
 
 | Method | Route | Purpose |
 | --- | --- | --- |
@@ -307,20 +307,24 @@ Azure is an optional hosting destination. The proposed architecture does not req
 
 ## Development plan
 
-There are currently no installation commands, environment templates, database migrations, or test commands to run. Add verified setup instructions alongside the first working implementation.
+See [docs/development.md](docs/development.md) for container and native Ruby setup, and [agent/README.md](agent/README.md) for the diagnostic CLI. The scaffold includes development configuration and tests, but no business database migrations. Ruby, Bundler, and Docker were unavailable on the scaffolding host, so boot and test execution remain to be verified in a configured environment.
 
-### Proposed repository layout
+### Repository layout
 
 ```text
 VeyloraAccess/
 ├── README.md
-├── platform/                 # Planned Rails application and workers
-├── agent/                    # Planned Ruby Windows agent
-├── infrastructure/           # Planned deployment and lab configuration
-└── docs/                     # Planned architecture and operational guides
+├── .github/workflows/        # Rails and cross-platform agent CI
+├── platform/                 # Rails shell, Hotwire, PostgreSQL configuration
+├── agent/                    # Ruby diagnostic CLI and tests
+├── infrastructure/           # Development image and infrastructure notes
+├── docs/                     # Setup, architecture, Windows lab, decisions
+├── compose.yml               # Local Rails + PostgreSQL services
+├── CONTRIBUTING.md
+└── SECURITY.md
 ```
 
-Only `README.md` exists today; the other paths above are proposed.
+The directories above exist. Domain integration, administrative authorization, durable workers, and Windows service packaging remain future implementation work.
 
 ### Initial lab
 
@@ -334,7 +338,7 @@ Create an employee through Rails, provision its Samba account, join a Windows te
 
 ## Roadmap
 
-All phases are planned; none are marked as delivered.
+The initial repository scaffold is present. The functional phases below remain planned; none are marked as delivered.
 
 ### Phase 0 — Prove Windows and Ruby integration
 

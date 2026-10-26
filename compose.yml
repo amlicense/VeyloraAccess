@@ -1,0 +1,39 @@
+name: veylora-access
+services:
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: veylora
+      POSTGRES_PASSWORD: veylora_dev_only
+      POSTGRES_DB: veylora_access_development
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U veylora -d veylora_access_development"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+  platform:
+    build:
+      context: .
+      dockerfile: infrastructure/Dockerfile.dev
+    working_dir: /app/platform
+    command: bundle exec ruby bin/rails server -b 0.0.0.0
+    environment:
+      RAILS_ENV: development
+      DB_HOST: db
+      DB_USER: veylora
+      DB_PASSWORD: veylora_dev_only
+    ports:
+      - "127.0.0.1:3000:3000"
+    volumes:
+      - .:/app
+      - bundle_data:/usr/local/bundle
+    depends_on:
+      db:
+        condition: service_healthy
+volumes:
+  postgres_data:
+  bundle_data:

@@ -1,0 +1,11 @@
+.git
+.env
+.env.*
+**/.bundle
+**/vendor/bundle
+**/log/*
+**/tmp/*
+**/coverage
+**/config/master.key
+*.key
+*.pem

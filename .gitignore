@@ -1,0 +1,16 @@
+.env
+.env.*
+!.env.example
+**/.bundle/
+**/vendor/bundle/
+**/log/*
+!**/log/.keep
+**/tmp/*
+!**/tmp/.keep
+**/coverage/
+**/config/master.key
+**/config/credentials/*.key
+*.pem
+*.key
+.DS_Store
+Thumbs.db

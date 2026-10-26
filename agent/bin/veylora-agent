@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+require "json"
+require_relative "../lib/veylora_agent"
+
+case ARGV
+when ["--version"]
+  puts VeyloraAgent::VERSION
+when ["--inventory"]
+  puts JSON.pretty_generate(VeyloraAgent::Inventory.snapshot)
+else
+  warn "Usage: ruby bin/veylora-agent --version | --inventory"
+  warn "Service hosting, enrollment, and permission changes are not implemented."
+  exit 64
+end

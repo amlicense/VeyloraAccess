@@ -1,0 +1,53 @@
+name: Ruby checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  platform:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: veylora
+          POSTGRES_PASSWORD: veylora_dev_only
+          POSTGRES_DB: veylora_access_test
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U veylora"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    defaults:
+      run:
+        working-directory: platform
+    env:
+      RAILS_ENV: test
+      DB_HOST: localhost
+      DB_USER: veylora
+      DB_PASSWORD: veylora_dev_only
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.4"
+          working-directory: platform
+          bundler-cache: true
+      - run: bundle exec ruby bin/rails db:prepare
+      - run: bundle exec ruby bin/rails zeitwerk:check
+      - run: bundle exec ruby bin/rails test
+  agent:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        working-directory: agent
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.4"
+          working-directory: agent
+          bundler-cache: true
+      - run: bundle exec rake test
+      - run: ruby bin/veylora-agent --inventory
