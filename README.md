@@ -8,7 +8,7 @@ The goal is for employees to sign in to Windows with their company identity, whi
 
 The platform uses **Ruby on Rails**, and the Windows agent is also written in **Ruby**. The initial authentication design uses **Samba Active Directory** for native Windows domain sign-in.
 
-> **Project status:** initial scaffold. The repository includes a Rails application shell, a Ruby agent diagnostic CLI, local development infrastructure, and CI definitions. Identity provisioning, enrollment, access enforcement, and Windows service hosting are not implemented. Runtime validation is still required; see [development setup](docs/development.md).
+> **Project status:** initial scaffold. The repository includes a Rails application shell and identity model foundation, a Ruby agent diagnostic CLI, local development infrastructure, and CI definitions. Identity provisioning, enrollment, access enforcement, and Windows service hosting are not implemented. Runtime validation is still required; see [development setup](docs/development.md).
 
 ## Contents
 
@@ -307,7 +307,7 @@ Azure is an optional hosting destination. The proposed architecture does not req
 
 ## Development plan
 
-See [docs/development.md](docs/development.md) for container and native Ruby setup, and [agent/README.md](agent/README.md) for the diagnostic CLI. The scaffold includes development configuration and tests, but no business database migrations. Ruby, Bundler, and Docker were unavailable on the scaffolding host, so boot and test execution remain to be verified in a configured environment.
+See [docs/development.md](docs/development.md) for container and native Ruby setup, and [agent/README.md](agent/README.md) for the diagnostic CLI. The platform includes business models, an identity foundation migration, and model tests; see [platform notes](platform/README.md) for their scope and migration requirements. Ruby, Bundler, and Docker were unavailable on the scaffolding host, so boot and test execution remain to be verified in a configured environment.
 
 ### Repository layout
 
