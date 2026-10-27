@@ -4,3 +4,4 @@ p { line-height: 1.6; }
 
 .alert { padding: 1rem; border-radius: 0.5rem; margin-bottom: 1rem; }
 .alert-info { background-color: #e0f2ff; color: #1e3a8a; }
+.lead { font-size: 1.25rem; font-weight: 500; }
