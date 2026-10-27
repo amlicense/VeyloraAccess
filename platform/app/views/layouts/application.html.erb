@@ -8,5 +8,13 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-  <body><main><%= yield %></main></body>
+  <body>
+    <header class="site-header">
+      <nav class="navbar" aria-label="Main navigation">
+        <%= link_to "Veylora Access", root_path, class: "navbar-brand" %>
+        <%= link_to "Home", root_path, class: "navbar-link", aria: { current: "page" } %>
+      </nav>
+    </header>
+    <main><%= yield %></main>
+  </body>
 </html>
