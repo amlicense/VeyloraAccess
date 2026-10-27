@@ -10,5 +10,6 @@ when ["--inventory"]
 else
   warn "Usage: ruby bin/veylora-agent --version | --inventory"
   warn "Service hosting, enrollment, and permission changes are not implemented."
+  warn "This application is under development. And is not even close to completion."
   exit 64
 end
