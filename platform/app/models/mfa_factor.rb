@@ -1,5 +1,5 @@
 class MfaFactor < ApplicationRecord
-  belongs_to :user
+  belongs_to :user # Belongs to a user
   encrypts :secret
   enum :kind, { totp: 0 }
   validates :secret, presence: true
