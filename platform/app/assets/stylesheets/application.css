@@ -12,8 +12,8 @@ p { line-height: 1.6; }
   margin: 0 auto;
   padding: 1rem 2rem;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   gap: 1rem;
 }
 .navbar-brand { font-weight: 600; }
@@ -26,3 +26,22 @@ p { line-height: 1.6; }
 
 
 .spacer-large { height: 20rem; }
+
+
+
+
+
+
+.small-text { font-size: 0.75rem; color: #6b7280; }
+
+.site-footer {
+  box-sizing: border-box;
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+}

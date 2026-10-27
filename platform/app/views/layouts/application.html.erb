@@ -16,5 +16,10 @@
       </nav>
     </header>
     <main><%= yield %></main>
+
+    <footer class="site-footer">
+      <p>&copy; <%= Time.current.year %> Veylora Access. All rights reserved.</p>
+      <p class="small-text">Version: <%= @version %> | Commit Hash: <%= @commit_hash %></p>
+    </footer>
   </body>
 </html>
