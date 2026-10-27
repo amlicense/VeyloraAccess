@@ -21,6 +21,8 @@ services:
       dockerfile: infrastructure/Dockerfile.dev
     working_dir: /app/platform
     command: bundle exec ruby bin/rails server -b 0.0.0.0
+    env_file:
+      - build.txt
     environment:
       RAILS_ENV: development
       DB_HOST: db

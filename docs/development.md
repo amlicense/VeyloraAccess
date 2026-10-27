@@ -3,7 +3,11 @@
 ## Container setup (recommended on Windows)
 
 Prerequisite: Docker Engine with Compose and Linux containers enabled.
-Run from the repository root:
+Run from the repository root. Generate the build metadata before running Compose:
+
+```bash
+./scripts/build-info.sh
+```
 
 ```powershell
 docker compose build
@@ -14,6 +18,18 @@ docker compose up platform
 
 Open http://localhost:3000. `/up` reports application liveness only, not database
 or directory readiness. There are no administrative or enrollment endpoints yet.
+
+To display the current Git version, commit hash, and UTC build time on the status
+page, run the build-info script before starting Compose:
+
+```bash
+./scripts/build-info.sh
+docker compose up platform
+```
+
+The script uses the latest Git tag (or the commit hash if no tags exist), the
+short current commit hash, and the current UTC time, and writes them to the
+generated, ignored `build.txt` file. Run it again for each new build.
 
 ```powershell
 docker compose run --rm -e RAILS_ENV=test platform bundle exec ruby bin/rails db:prepare test
