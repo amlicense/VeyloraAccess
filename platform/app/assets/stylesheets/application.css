@@ -2,30 +2,24 @@
 main { max-width: 48rem; margin: 5rem auto; padding: 2rem; }
 p { line-height: 1.6; }
 
-.alert { padding: 1rem; border-radius: 0.5rem; margin-bottom: 1rem; }
+.alert { padding: 1rem; border-radius: 0.5rem; margin-bottom: 1rem; align-items: center; justify-content: center; flex-direction: column; display: flex; gap: 0.5rem; }
 .alert-info { background-color: #e0f2ff; color: #1e3a8a; }
 .lead { font-size: 1.25rem; font-weight: 500; }
 
-.site-header { background: #fff; border-bottom: 1px solid #dce4f0; }
 .navbar {
   box-sizing: border-box;
-  max-width: 52rem;
-  min-height: 4rem;
+  max-width: 48rem;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 1rem 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
 }
-.navbar-brand { color: #1e3a8a; font-size: 1.05rem; font-weight: 700; text-decoration: none; }
-.navbar-link {
-  color: #344563;
-  font-size: 0.95rem;
-  font-weight: 600;
-  text-decoration: none;
-  padding: 0.5rem 0.75rem;
-  border-radius: 0.375rem;
-}
-.navbar-link:hover, .navbar-link[aria-current="page"] { color: #1e3a8a; background: #e0f2ff; }
-.navbar-brand:focus-visible, .navbar-link:focus-visible { outline: 2px solid #2563eb; outline-offset: 3px; }
+.navbar-brand { font-weight: 600; }
+.navbar a { color: inherit; text-decoration: none; }
+.navbar a:hover { text-decoration: underline; }
+
+.index-div { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; }
+
+.spacer-large { height: 20rem; }

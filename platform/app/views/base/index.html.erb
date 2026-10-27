@@ -1,15 +1,38 @@
-<div class="alert alert-info" role="alert">
+<div class="alert" role="alert">
   <h1><%= @title %></h1>
   <p class="lead"><%= @tagline %></p>
   <p>Welcome to the Veylora Access platform! This platform is designed to manage access to Microsoft company services.</p>
 </div>
 
-<div class="alert alert-info" role="alert">
-  <h2><%= @title_system %></h2>
-  <p>Version: <%= @version %></p>
-  <p>Commit Hash: <%= @commit_hash %></p>
-  <p>Rails Version: <%= @rails_version %></p>
-  <p>Ruby Version: <%= @ruby_version %></p>
-  <p>Build Date: <%= @build_date %></p>
-  <p>Operating System: <%= @os %></p>
+<div class="spacer-large"></div>
+
+<div class="index-div">
+  <h2>About Veylora Access</h2>
+  <p>Veylora Access is a platform that provides a unified identity and access management solution for company devices. It allows users to securely access Microsoft services and manage their devices with ease.</p>
+  <p>The platform is currently in development, and we are working on implementing features such as identity provisioning, device enrollment, Windows sign-in integration, and access management.</p>
+  <p>Stay tuned for updates as we continue to enhance the platform and provide a seamless experience for our users.</p>
+</div>
+
+<%# <div class="index-div">
+  <h2>Getting Started</h2>
+  <p>To get started, please follow the instructions below:</p>
+  <ol>
+    <li>Ensure you have the necessary credentials to access the platform.</li>
+    <li>Log in using your company account.</li>
+    <li>Navigate through the dashboard to manage your access and devices.</li>
+  </ol>
+  <p>If you encounter any issues, please contact the support team for assistance.</p>
+</div>  /Z%>
+
+<div class="index-div">
+  <h2>Current Development System Information</h2>
+  <p>This section provides information about the current developmentsystem environment.</p>
+  <ul>
+    <li>Version: <%= @version %></li>
+    <li>Commit Hash: <%= @commit_hash %></li>
+    <li>Rails Version: <%= @rails_version %></li>
+    <li>Ruby Version: <%= @ruby_version %></li>
+    <li>Build Date: <%= @build_date %></li>
+    <li>Operating System: <%= @os %></li>
+    </ul>
 </div>
