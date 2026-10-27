@@ -20,6 +20,8 @@
     <footer class="site-footer">
       <p>&copy; <%= Time.current.year %> Veylora Access. All rights reserved.</p>
       <p class="small-text">Version: <%= @version %> | Commit Hash: <%= @commit_hash %></p>
+      <p class="small-text-no-space">Rails Version: <%= @rails_version %> | Ruby Version: <%= @ruby_version %></p>
+      <p class="small-text-no-space">Build Date: <%= @build_date %> | Operating System: <%= @os %></p>
     </footer>
   </body>
 </html>
