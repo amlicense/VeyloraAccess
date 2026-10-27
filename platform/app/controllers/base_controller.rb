@@ -5,6 +5,7 @@ class BaseController < ApplicationController
     @tagline = "One identity. Every company device."
     @title_system = "Veylora Access Build Information"
     @description = "Veylora Access is a platform for managing access to Microsoft company services."
+    @github_url = "https://github.com/amlicense/VeyloraAccess"
     @version = ENV["VERSION"] || "N/A"
     @commit_hash = ENV["COMMIT_HASH"] || "N/A"
     @build_date = ENV["BUILD_DATE"] || "N/A"
