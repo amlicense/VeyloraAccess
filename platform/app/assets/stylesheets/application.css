@@ -22,4 +22,7 @@ p { line-height: 1.6; }
 
 .index-div { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; }
 
+.current-state { font-weight: 600; }
+
+
 .spacer-large { height: 20rem; }
