@@ -2,6 +2,7 @@ class BaseController < ApplicationController
   def index
 
     @title = "Veylora Access"
+    @title_system = "Veylora Access Build Information"
     @description = "Veylora Access is a platform for managing access to Microsoft company services."
     @version = ENV["VERSION"] || "N/A"
     @commit_hash = ENV["COMMIT_HASH"] || "N/A"

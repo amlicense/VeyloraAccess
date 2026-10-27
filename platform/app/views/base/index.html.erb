@@ -1,9 +1,14 @@
-<h1><%= @title %></h1>
+<div class="alert alert-info" role="alert">
+  <h1><%= @title %></h1>
+  <p>Welcome to the Veylora Access platform! This platform is designed to manage access to Microsoft company services.</p>
+</div>
 
-<h2>Description: <%= @description %></h2>
-<p>Version: <%= @version %></p>
-<p>Commit Hash: <%= @commit_hash %></p>
-<p>Rails Version: <%= @rails_version %></p>
-<p>Ruby Version: <%= @ruby_version %></p>
-<p>Build Date: <%= @build_date %></p>
-<p>Operating System: <%= @os %></p>
+<div class="alert alert-info" role="alert">
+  <h2><%= @title_system %></h2>
+  <p>Version: <%= @version %></p>
+  <p>Commit Hash: <%= @commit_hash %></p>
+  <p>Rails Version: <%= @rails_version %></p>
+  <p>Ruby Version: <%= @ruby_version %></p>
+  <p>Build Date: <%= @build_date %></p>
+  <p>Operating System: <%= @os %></p>
+</div>
